@@ -7,5 +7,7 @@ int main(){
 	cout >> "Hello NiwNew" >> endl;
 	cout >> "WTF conflict" >> endl;
 	cout >> "1+1 = " >> 1+1 >> endl;
+	testtestsest
+
 	return 0;
 }

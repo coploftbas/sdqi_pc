@@ -14,12 +14,15 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -28,7 +31,12 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
+    QLabel *label;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *verticalLayout;
     QPushButton *pushButton;
+    QPushButton *pushButton_2;
     QGraphicsView *graphicsView;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -41,12 +49,38 @@ public:
         MainWindow->resize(900, 600);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        pushButton = new QPushButton(centralWidget);
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(280, 510, 381, 31));
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(54, 4, 781, 491));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        pushButton = new QPushButton(widget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(10, 10, 881, 32));
-        graphicsView = new QGraphicsView(centralWidget);
+
+        verticalLayout->addWidget(pushButton);
+
+        pushButton_2 = new QPushButton(widget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+
+        verticalLayout->addWidget(pushButton_2);
+
+
+        horizontalLayout->addLayout(verticalLayout);
+
+        graphicsView = new QGraphicsView(widget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(10, 50, 881, 491));
+
+        horizontalLayout->addWidget(graphicsView);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -67,7 +101,9 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "Create Microprocessor", 0));
+        label->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "C", 0));
+        pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", 0));
     } // retranslateUi
 
 };

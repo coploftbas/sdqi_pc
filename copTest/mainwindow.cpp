@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "myrectangle.h"
 #include "ui_mainwindow.h"
 
 int posX = 0;
@@ -29,6 +30,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
+
     QBrush blueBrush(Qt::gray);
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
@@ -36,4 +38,17 @@ void MainWindow::on_pushButton_clicked()
     rectangle->setFlag(QGraphicsItem::ItemIsMovable);
     posX += 50;
     posY += 50;
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QColor color = QColorDialog::getColor(Qt::green, this);
+
+    rectangle->setBrush(color);
+       /*if (color.isValid())
+       {
+           ui->label->setText(color.name());
+           ui->label->setPalette(QPalette(color));
+           ui->label->setAutoFillBackground(true);
+       }*/
 }

@@ -40,6 +40,25 @@ void MainWindow::on_pushButton_clicked()
     posY += 50;
 }
 
+void MainWindow::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+ {
+
+    /*
+     if (QLineF(event->screenPos(), event->buttonDownScreenPos(Qt::LeftButton))
+         .length() < QApplication::startDragDistance()) {
+         return;
+     }
+
+
+     QDrag *drag = new QDrag(event->on_pushButton_clicked());
+     QMimeData *mime = new QMimeData;
+     drag->setMimeData(mime);
+
+     drag->exec();
+
+*/
+}
+
 void MainWindow::on_pushButton_2_clicked()
 {
     QColor color = QColorDialog::getColor(Qt::green, this);

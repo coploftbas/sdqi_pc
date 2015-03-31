@@ -8,6 +8,7 @@
 #include <QtCore>
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
+#include <QPointF>
 
 class MyRectangle
 {

@@ -13,10 +13,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    myrectangle.cpp
+        mainwindow.cpp
 
-HEADERS  += mainwindow.h \
-    myrectangle.h
+HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui

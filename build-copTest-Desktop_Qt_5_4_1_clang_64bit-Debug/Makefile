@@ -49,11 +49,9 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../copTest/main.cpp \
-		../copTest/mainwindow.cpp \
-		../copTest/myrectangle.cpp moc_mainwindow.cpp
+		../copTest/mainwindow.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		myrectangle.o \
 		moc_mainwindow.o
 DIST          = /Applications/Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.4/clang_64/mkspecs/qdevice.pri \
@@ -183,10 +181,8 @@ DIST          = /Applications/Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.4/clang_64/mkspecs/features/exceptions.prf \
 		/Applications/Qt/5.4/clang_64/mkspecs/features/yacc.prf \
 		/Applications/Qt/5.4/clang_64/mkspecs/features/lex.prf \
-		../copTest/copTest.pro ../copTest/mainwindow.h \
-		../copTest/myrectangle.h ../copTest/main.cpp \
-		../copTest/mainwindow.cpp \
-		../copTest/myrectangle.cpp
+		../copTest/copTest.pro ../copTest/mainwindow.h ../copTest/main.cpp \
+		../copTest/mainwindow.cpp
 QMAKE_TARGET  = copTest
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = copTest.app/Contents/MacOS/copTest
@@ -522,8 +518,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../copTest/mainwindow.h ../copTest/myrectangle.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../copTest/main.cpp ../copTest/mainwindow.cpp ../copTest/myrectangle.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../copTest/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../copTest/main.cpp ../copTest/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../copTest/mainwindow.ui $(DISTDIR)/
 
 
@@ -820,10 +816,13 @@ moc_mainwindow.cpp: /Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versio
 		/Applications/Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qtcoreversion.h \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsScene \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsscene.h \
+		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsView \
+		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsview.h \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsRectItem \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsitem.h \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QColorDialog \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcolordialog.h \
+		/Applications/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/QMouseEvent \
 		../copTest/mainwindow.h
 	/Applications/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Applications/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/coploftbas/Documents/sdqi_pc/copTest -I/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Applications/Qt/5.4/clang_64/lib ../copTest/mainwindow.h -o moc_mainwindow.cpp
 
@@ -1115,10 +1114,13 @@ main.o: ../copTest/main.cpp ../copTest/mainwindow.h \
 		/Applications/Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qtcoreversion.h \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsScene \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsscene.h \
+		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsView \
+		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsview.h \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsRectItem \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsitem.h \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QColorDialog \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcolordialog.h \
+		/Applications/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/QMouseEvent \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../copTest/main.cpp
@@ -1391,21 +1393,20 @@ mainwindow.o: ../copTest/mainwindow.cpp ../copTest/mainwindow.h \
 		/Applications/Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qtcoreversion.h \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsScene \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsscene.h \
+		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsView \
+		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsview.h \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsRectItem \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsitem.h \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QColorDialog \
 		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcolordialog.h \
+		/Applications/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/QMouseEvent \
+		../copTest/myrectangle.h \
+		/Applications/Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
+		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
+		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		/Applications/Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QPointF \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../copTest/mainwindow.cpp
-
-myrectangle.o: ../copTest/myrectangle.cpp ../copTest/myrectangle.h \
-		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
-		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
-		/Applications/Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
-		/Applications/Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
-		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
-		/Applications/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o myrectangle.o ../copTest/myrectangle.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
